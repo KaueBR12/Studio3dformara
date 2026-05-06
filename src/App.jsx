@@ -17,10 +17,16 @@ import { AboutPage } from './components/AboutPage';
 export default function App() {
   const [view, setView] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSelectProduct = (product) => {
-    setSelectedProduct(product);
-    setView('product');
+    setLoading(true);
+    setTimeout(() => {
+      setSelectedProduct(product);
+      setView('product');
+      setLoading(false);
+      window.scrollTo(0, 0);
+    }, 600);
   };
 
   const handleNavigate = (newView, targetId = null) => {
@@ -43,23 +49,44 @@ export default function App() {
       <div id="stars3" />
       <Navbar onHome={handleNavigate} />
 
+      {loading && <ProductLoader />}
+
       {view === 'product' && selectedProduct ? (
         <ProductPage product={selectedProduct} onBack={() => handleNavigate('home', 'catalogo')} />
       ) : view === 'about' ? (
-        <AboutPage onBack={handleNavigate} />
+        <AboutPage onBack={() => handleNavigate('home')} />
       ) : (
         <>
-          <Hero />
+          <Hero onCatalogClick={() => handleNavigate('home', 'catalogo')} />
           <Stats />
-          <Catalog onSelectProduct={handleSelectProduct} />
-          <Materials />
+          <div id="catalogo">
+            <Catalog onSelectProduct={handleSelectProduct} />
+          </div>
+          <div id="materiais">
+            <Materials />
+          </div>
           <HowItWorks />
           <Testimonials />
           <CTA />
         </>
       )}
 
-      <Footer onHome={handleNavigate} />
+      <Footer onNavigate={handleNavigate} />
+    </div>
+  );
+}
+
+function ProductLoader() {
+  return (
+    <div className="product-loader-overlay">
+      <div className="product-loader-content">
+        <div className="concentric-loader">
+          <div className="outer-ring">
+            <div className="inner-ring" />
+          </div>
+        </div>
+        <p>Carregando Detalhes...</p>
+      </div>
     </div>
   );
 }
