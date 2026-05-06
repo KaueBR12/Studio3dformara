@@ -119,19 +119,19 @@ button {
   left: 0;
   right: 0;
   z-index: 1000;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 3 colunas: esquerda, centro (auto), direita */
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
-  background: #000;
+  padding: 1.2rem 4rem;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
-  background: #000;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
-  padding: 0.7rem 2rem;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 0.8rem 4rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nav-logo {
@@ -152,8 +152,9 @@ button {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 3.5rem; /* Aumentado de 2rem para 3.5rem para dar mais espaço */
   list-style: none;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -169,16 +170,17 @@ button {
 }
 
 .nav-cta {
-  background: var(--accent);
+  justify-self: end; /* Garante que o botão fique na ponta direita */
+  background: var(--accent-gradient);
   color: #fff;
   border: none;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: all 0.3s ease;
 }
 
 .nav-cta:hover {
@@ -245,7 +247,12 @@ button {
   font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
 
   .nav-links,
   .nav-cta {
