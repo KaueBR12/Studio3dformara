@@ -17,10 +17,10 @@ export function CTA() {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       setSubmitted(true);
-      const message = `🚀 *Novo Contato - Studio 3D Formará*\n` +
+      const message = `*Novo Contato - Studio 3D Formará*\n` +
         `--------------------------------------------\n` +
-        `👤 *Nome:* ${name}\n` +
-        `✉️ *E-mail:* ${email}\n\n` +
+        `Nome: ${name}\n` +
+        `E-mail: ${email}\n\n` +
         `Olá! Vi o site e gostaria de solicitar um orçamento personalizado para o meu projeto 3D.`;
       const msgEncoded = encodeURIComponent(message);
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');

@@ -65,7 +65,7 @@ export function ProductPage({ product, onBack }) {
             <button
               className="btn-primary btn-solicitar-large"
               onClick={() => {
-                const message = `🛠️ *Interesse em Produto - Studio 3D Formará*\n` +
+                const message = `*Interesse em Produto - Studio 3D Formará*\n` +
                   `--------------------------------------------\n` +
                   `*Produto:* ${product.name}\n` +
                   `*Material:* ${product.material}\n` +

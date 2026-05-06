@@ -53,7 +53,7 @@ export function Catalog({ onSelectProduct }) {
                   const priceLabel = p.priceMin != null
                     ? `R$ ${p.priceMin} – R$ ${p.priceMax}`
                     : `R$ ${p.price.toFixed(2).replace('.', ',')}`;
-                  const message = `🛠️ *Interesse em Produto - Studio 3D Formará*\n` +
+                  const message = `*Interesse em Produto - Studio 3D Formará*\n` +
                     `--------------------------------------------\n` +
                     `*Produto:* ${p.name}\n` +
                     `*Material:* ${p.material}\n` +
