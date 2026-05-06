@@ -749,23 +749,23 @@ button {
 /* ===== STATS ===== */
 .stats {
   background: var(--primary-mid);
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .stats-grid {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 7rem;
   text-align: center;
 }
 
 .stat-item h3 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 4vw, 2.5rem);
   color: var(--accent-light);
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .stat-item p {
@@ -1508,13 +1508,15 @@ button {
 
 @media (max-width: 768px) {
   .footer-grid {
-    grid-template-columns: repeat(3, 1fr); /* Divide em 3 colunas para os links */
+    grid-template-columns: repeat(3, 1fr);
+    /* Divide em 3 colunas para os links */
     text-align: center;
     gap: 2rem 1rem;
   }
 
   .footer-brand {
-    grid-column: 1 / -1; /* Faz a marca ocupar a largura total no topo */
+    grid-column: 1 / -1;
+    /* Faz a marca ocupar a largura total no topo */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1522,7 +1524,8 @@ button {
   }
 
   .footer h5 {
-    font-size: 0.85rem; /* Fonte menor para caber lado a lado */
+    font-size: 0.85rem;
+    /* Fonte menor para caber lado a lado */
     margin-bottom: 0.8rem;
   }
 
@@ -1771,6 +1774,7 @@ button {
     text-align: center;
   }
 }
+
 /* ===== ABOUT PAGE ===== */
 .about-page {
   padding: 10rem 2rem 6rem;
@@ -1836,7 +1840,7 @@ button {
   .about-content {
     padding: 2.5rem;
   }
-  
+
   .about-header h1 {
     font-size: 2.5rem;
   }
