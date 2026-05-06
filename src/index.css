@@ -1475,7 +1475,7 @@ button {
 .cta-section {
   padding: 5rem 2rem;
   /* Usando a cor --accent-secondary (#4834d4) com 70% de opacidade */
-  background: rgba(72, 52, 212, 0.7) !important;
+  background: rgba(72, 52, 212, 0.9) !important;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -1610,7 +1610,8 @@ button {
 }
 
 .dev-link {
-  color: #00f2ff !important; /* Azul Brilhante Neon */
+  color: #00f2ff !important;
+  /* Azul Brilhante Neon */
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
