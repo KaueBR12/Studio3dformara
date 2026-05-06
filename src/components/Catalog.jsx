@@ -25,7 +25,11 @@ export function Catalog({ onSelectProduct }) {
           <div className="product-card" key={p.id} onClick={() => onSelectProduct(p)}>
             <div className="product-image">
               {p.images && p.images[0] ? (
-                <img src={p.images[0]} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img 
+                  src={p.images[0]} 
+                  alt={p.name} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                />
               ) : (
                 <ProductIcon />
               )}

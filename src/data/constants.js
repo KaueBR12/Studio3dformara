@@ -9,7 +9,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: 'Popular',
     description: 'A Litofania é uma peça de arte tridimensional que revela uma imagem detalhada quando iluminada por trás. Perfeita para presentes personalizados e decoração memorável.',
-    images: ['/images/p1a.png', '/images/p1b.png']
+    images: ['/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: null,
     description: 'Chaveiros em resina com detalhes ultra-precisos e acabamento translúcido. Ideais para colecionáveis e brindes sofisticados.',
-    images: ['/images/p3a.png', '/images/p3b.png']
+    images: ['/images/cheaveirocefe.png', '/images/chaveirotanjr.png', '/images/chaveirocoracao.png']
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: null,
     description: 'Uma caixa organizadora elegante disfarçada de livro. Combina funcionalidade com um toque clássico para qualquer ambiente.',
-    images: ['/images/p4a.png', '/images/p4b.png']
+    images: ['/images/livrocaixa.png']
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ export const PRODUCTS = [
     material: 'PLA',
     category: 'Decoração',
     description: 'Marca-páginas com designs geométricos e artísticos. Leves, resistentes e perfeitos para os amantes da leitura.',
-    images: ['/images/p5a.png', '/images/p5b.png']
+    images: ['/images/marcapg1.png', '/images/marcapg2.png', '/images/marcapg3.png']
   },
   {
     id: 6,
@@ -61,7 +61,25 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: 'Popular',
     description: 'Transforme a foto do seu melhor amigo em uma miniatura 3D eterna. Capturamos os detalhes únicos que tornam seu pet especial.',
-    images: ['/images/p6a.png', '/images/p6b.png']
+    images: ['/images/pet.png', '/images/pet2.png']
+  },
+  {
+    id: 7,
+    name: 'Carta Envelope',
+    price: 15,
+    material: 'PLA',
+    category: 'Decoração',
+    description: 'Um envelope decorativo elegante e personalizado, ideal para presentear ou organizar pequenos cartões com um toque artesanal 3D.',
+    images: ['/images/cartaenv.png']
+  },
+  {
+    id: 8,
+    name: 'Porta Retrato de Nuvem',
+    price: 10,
+    material: 'PLA',
+    category: 'Decoração',
+    description: 'Um porta-retrato charmoso em formato de nuvem, perfeito para decorar quartos infantis ou trazer um toque lúdico ao ambiente.',
+    images: ['/images/portretrato.png']
   },
 ];
 
@@ -74,7 +92,8 @@ export const MATERIALS = [
 ];
 
 export const TESTIMONIALS = [
-  { name: 'Carlos Mendes', company: 'AutoTech Engenharia', text: 'A qualidade das peças superou todas as expectativas. O acabamento é impecável e a precisão dimensional é perfeita para nossas aplicações industriais.', stars: 5 },
-  { name: 'Ana Beatriz', company: 'Studio Arquitetura', text: 'Já fizemos mais de 30 maquetes com a Studio 3D Formará. A equipe entende exatamente o que precisamos e entrega sempre no prazo. Recomendo demais!', stars: 5 },
-  { name: 'Roberto Silva', company: 'EduRobot', text: 'Os kits educacionais ficaram incríveis! Material resistente, cores vibrantes e o suporte técnico é excepcional. Parceria de longo prazo garantida.', stars: 5 },
+  { name: 'Amanda de Araújo Bonetti', text: 'Amei esse ursinho em impressão 3D pra decorar o quarto da Alice. Ficou top!', stars: 5 },
+  { name: 'Arianna', text: 'Adorei esse lindo detalhe, gostei da qualidade também, uma linda lembrança para dar de presente!', stars: 5 },
+  { name: 'Cristiane', company: 'OhubDev', text: 'Amei!', stars: 5 },
+  { name: 'Madalena Rockemback', text: 'Vocês são incríveis, eu amei, vocês fizeram exatamente o que eu pensei <3', stars: 5 }
 ];
