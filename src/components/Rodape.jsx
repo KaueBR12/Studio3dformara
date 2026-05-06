@@ -40,6 +40,7 @@ export function Rodape({ onHome }) {
       </div>
       <div className="footer-bottom">
         <p>© 2026 Studio 3D Formará. Todos os direitos reservados.</p>
+        <p>Site construído por <a href="https://www.instagram.com/kauepereira43/" target="_blank" rel="noopener noreferrer" className="dev-link">Kaue Pereira</a></p>
       </div>
     </footer>
   );

@@ -239,7 +239,7 @@ button {
   padding: 1.2rem 4rem;
   transition: all 0.3s ease;
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(0px);
 }
 
 .navbar.scrolled {
@@ -1362,21 +1362,18 @@ button {
   }
 
   .steps-line {
-    left: 32px;
-    top: 0;
-    bottom: 0;
-    right: auto;
-    width: 3px;
-    height: 100%;
+    display: none;
+    /* Remove a linha no mobile */
   }
 
   .step {
     text-align: left;
     display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+    gap: 1.2rem;
+    align-items: center;
     width: 100%;
-    padding-left: 3rem;
+    padding-left: 1rem;
+    /* Puxando para a esquerda (antes era 3rem) */
   }
 
   .step-icon {
@@ -1474,11 +1471,14 @@ button {
   border-color: var(--accent);
 }
 
-/* ===== CTA ===== */
+
 .cta-section {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  /* Usando a cor --accent-secondary (#4834d4) com 70% de opacidade */
+  background: rgba(72, 52, 212, 0.7) !important;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-section h2 {
@@ -1609,6 +1609,19 @@ button {
   color: var(--accent-light);
 }
 
+.dev-link {
+  color: #00f2ff !important; /* Azul Brilhante Neon */
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dev-link:hover {
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 0 0 20px rgba(0, 242, 255, 0.4);
+  filter: brightness(1.2);
+}
+
 .footer-social {
   display: flex;
   gap: 0.8rem;
@@ -1737,7 +1750,7 @@ button {
   border-radius: 24px;
   background: rgba(0, 0, 0, 0);
   border: 1px solid rgba(255, 255, 25, 0.05);
-  backdrop-filter: blur(135px);
+  backdrop-filter: blur(15px);
 }
 
 .product-detail-left {
