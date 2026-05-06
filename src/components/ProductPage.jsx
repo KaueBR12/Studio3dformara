@@ -65,12 +65,13 @@ export function ProductPage({ product, onBack }) {
             <button
               className="btn-primary btn-solicitar-large"
               onClick={() => {
-                const message = `*Interesse em Produto - Studio 3D Formará*\n` +
+                const message = `*Solicitação de Orçamento - Studio 3D Formará*\n` +
                   `--------------------------------------------\n` +
-                  `*Produto:* ${product.name}\n` +
+                  `Olá! Gostaria de verificar a disponibilidade e condições para o seguinte item do catálogo:\n\n` +
+                  `*Item:* ${product.name}\n` +
                   `*Material:* ${product.material}\n` +
-                  `*Valor:* ${priceLabel}\n\n` +
-                  `Olá! Tenho interesse neste item do catálogo e gostaria de mais detalhes sobre prazos e personalização.`;
+                  `*Referência:* ${priceLabel}\n\n` +
+                  `Poderiam me informar o prazo de entrega e as opções de personalização disponíveis para este projeto?`;
                 const msgEncoded = encodeURIComponent(message);
                 window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
               }}

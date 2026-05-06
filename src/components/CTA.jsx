@@ -17,11 +17,12 @@ export function CTA() {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       setSubmitted(true);
-      const message = `*Novo Contato - Studio 3D Formará*\n` +
+      const message = `*CONTATO PARA PROJETO PERSONALIZADO*\n` +
         `--------------------------------------------\n` +
-        `Nome: ${name}\n` +
-        `E-mail: ${email}\n\n` +
-        `Olá! Vi o site e gostaria de solicitar um orçamento personalizado para o meu projeto 3D.`;
+        `Olá, Studio 3D Formará! Gostaria de solicitar um atendimento para um novo projeto.\n\n` +
+        `*Cliente:* ${name}\n` +
+        `*E-mail:* ${email}\n\n` +
+        `Aguardo o retorno para discutirmos os detalhes técnicos, materiais e prazos.`;
       const msgEncoded = encodeURIComponent(message);
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
     }

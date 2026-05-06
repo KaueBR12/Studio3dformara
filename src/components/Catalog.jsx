@@ -25,10 +25,10 @@ export function Catalog({ onSelectProduct }) {
           <div className="product-card" key={p.id} onClick={() => onSelectProduct(p)}>
             <div className="product-image">
               {p.images && p.images[0] ? (
-                <img 
-                  src={p.images[0]} 
-                  alt={p.name} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                <img
+                  src={p.images[0]}
+                  alt={p.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               ) : (
                 <ProductIcon />
@@ -53,12 +53,13 @@ export function Catalog({ onSelectProduct }) {
                   const priceLabel = p.priceMin != null
                     ? `R$ ${p.priceMin} – R$ ${p.priceMax}`
                     : `R$ ${p.price.toFixed(2).replace('.', ',')}`;
-                  const message = `*Interesse em Produto - Studio 3D Formará*\n` +
-                    `--------------------------------------------\n` +
-                    `*Produto:* ${p.name}\n` +
+                  const message = `*Solicitação de Orçamento - Studio 3D Formará*\n` +
+                    `\n` +
+                    `Olá! Gostaria de verificar a disponibilidade e condições para o seguinte item do catálogo:\n\n` +
+                    `*Item:* ${p.name}\n` +
                     `*Material:* ${p.material}\n` +
-                    `*Valor:* ${priceLabel}\n\n` +
-                    `Olá! Tenho interesse neste item do catálogo e gostaria de mais detalhes sobre prazos e personalização.`;
+                    `*Referência:* ${priceLabel}\n\n` +
+                    `Poderiam me informar o prazo de entrega e as opções de personalização disponíveis para este projeto?`;
                   const msgEncoded = encodeURIComponent(message);
                   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
                 }}
