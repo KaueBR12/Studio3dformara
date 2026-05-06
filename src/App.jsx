@@ -1,35 +1,87 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import './index.css';
 
+const WHATSAPP_NUMBER = '5547984197103';
+
 /* ============================================================
    DATA
    ============================================================ */
 const PRODUCTS = [
-  { id: 1, name: 'Engrenagem Industrial', price: 45, material: 'PLA/ABS', category: 'Peças Técnicas', ribbon: 'Popular' },
-  { id: 2, name: 'Case para Eletrônicos', price: 89, material: 'PETG', category: 'Peças Técnicas', ribbon: 'Novo' },
-  { id: 3, name: 'Protótipo Arquitetônico', price: 320, material: 'Resina', category: 'Protótipos', ribbon: null },
-  { id: 4, name: 'Suporte de Parede Modular', price: 35, material: 'PLA', category: 'Decoração', ribbon: null },
-  { id: 5, name: 'Peça de Reposição Custom', price: 120, material: 'Nylon', category: 'Peças Técnicas', ribbon: 'Popular' },
-  { id: 6, name: 'Miniatura Decorativa', price: 65, material: 'Resina UV', category: 'Decoração', ribbon: 'Novo' },
-  { id: 7, name: 'Molde para Fabricação', price: 280, material: 'ABS', category: 'Protótipos', ribbon: null },
-  { id: 8, name: 'Conector Mecânico', price: 28, material: 'PLA+', category: 'Peças Técnicas', ribbon: null },
-  { id: 9, name: 'Kit Educacional Robótica', price: 195, material: 'PLA Colorido', category: 'Educacional', ribbon: 'Novo' },
+  {
+    id: 1,
+    name: 'Litofania',
+    price: 250,
+    material: 'PLA',
+    category: 'Decoração',
+    ribbon: 'Popular',
+    description: 'A Litofania é uma peça de arte tridimensional que revela uma imagem detalhada quando iluminada por trás. Perfeita para presentes personalizados e decoração memorável.',
+    images: ['/images/p1a.png', '/images/p1b.png']
+  },
+  {
+    id: 2,
+    name: 'Chaveiros Personalizados',
+    priceMin: 8,
+    priceMax: 25,
+    material: 'PLA/PETG',
+    category: 'Decoração',
+    ribbon: 'Novo',
+    description: 'Chaveiros exclusivos criados sob medida. Personalize com nomes, logotipos ou designs únicos. Alta durabilidade e acabamento premium.',
+    images: ['/images/p2a.png', '/images/p2b.png']
+  },
+  {
+    id: 3,
+    name: 'Chaveiros',
+    priceMin: 5,
+    priceMax: 30,
+    material: 'PLA/PETG',
+    category: 'Decoração',
+    ribbon: null,
+    description: 'Chaveiros em resina com detalhes ultra-precisos e acabamento translúcido. Ideais para colecionáveis e brindes sofisticados.',
+    images: ['/images/p3a.png', '/images/p3b.png']
+  },
+  {
+    id: 4,
+    name: 'Caixa Livro',
+    price: 150,
+    material: 'PLA',
+    category: 'Decoração',
+    ribbon: null,
+    description: 'Uma caixa organizadora elegante disfarçada de livro. Combina funcionalidade com um toque clássico para qualquer ambiente.',
+    images: ['/images/p4a.png', '/images/p4b.png']
+  },
+  {
+    id: 5,
+    name: 'Marca Páginas',
+    priceMin: 10,
+    priceMax: 40,
+    material: 'PLA',
+    category: 'Decoração',
+    description: 'Marca-páginas com designs geométricos e artísticos. Leves, resistentes e perfeitos para os amantes da leitura.',
+    images: ['/images/p5a.png', '/images/p5b.png']
+  },
+  {
+    id: 6,
+    name: 'Miniatura Decorativa do seu Pet',
+    price: 180,
+    material: 'PLA',
+    category: 'Decoração',
+    ribbon: 'Popular',
+    description: 'Transforme a foto do seu melhor amigo em uma miniatura 3D eterna. Capturamos os detalhes únicos que tornam seu pet especial.',
+    images: ['/images/p6a.png', '/images/p6b.png']
+  },
 ];
 
-const CATEGORIES = ['Todos', 'Peças Técnicas', 'Decoração', 'Protótipos', 'Educacional'];
+const CATEGORIES = ['Todos', 'Decoração'];
 
 const MATERIALS = [
   { name: 'PLA', desc: 'Biodegradável e fácil de imprimir. Ideal para protótipos e modelos decorativos.', icon: '🌿', res: 60, flex: 30, temp: 40 },
   { name: 'ABS', desc: 'Alta resistência mecânica e térmica. Perfeito para peças industriais.', icon: '🔧', res: 80, flex: 40, temp: 85 },
   { name: 'PETG', desc: 'Combina resistência com transparência. Ótimo para peças funcionais.', icon: '💎', res: 75, flex: 50, temp: 70 },
-  { name: 'Resina', desc: 'Detalhamento excepcional. Ideal para miniaturas e peças estéticas.', icon: '✨', res: 50, flex: 20, temp: 55 },
-  { name: 'Nylon', desc: 'Extremamente resistente e flexível. Para aplicações de engenharia.', icon: '⚡', res: 90, flex: 80, temp: 75 },
-  { name: 'TPU', desc: 'Material flexível e elástico. Perfeito para capas, vedações e juntas.', icon: '🔄', res: 45, flex: 95, temp: 60 },
 ];
 
 const TESTIMONIALS = [
   { name: 'Carlos Mendes', company: 'AutoTech Engenharia', text: 'A qualidade das peças superou todas as expectativas. O acabamento é impecável e a precisão dimensional é perfeita para nossas aplicações industriais.', stars: 5 },
-  { name: 'Ana Beatriz', company: 'Studio Arquitetura', text: 'Já fizemos mais de 30 maquetes com a PrintLab 3D. A equipe entende exatamente o que precisamos e entrega sempre no prazo. Recomendo demais!', stars: 5 },
+  { name: 'Ana Beatriz', company: 'Studio Arquitetura', text: 'Já fizemos mais de 30 maquetes com a Studio 3D Formará. A equipe entende exatamente o que precisamos e entrega sempre no prazo. Recomendo demais!', stars: 5 },
   { name: 'Roberto Silva', company: 'EduRobot', text: 'Os kits educacionais ficaram incríveis! Material resistente, cores vibrantes e o suporte técnico é excepcional. Parceria de longo prazo garantida.', stars: 5 },
 ];
 
@@ -37,19 +89,24 @@ const TESTIMONIALS = [
    SVG ICONS (inline)
    ============================================================ */
 const CubeLogo = () => (
-  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" stroke="currentColor" strokeWidth="2" fill="rgba(29,111,164,0.2)"/>
-    <path d="M16 2L28 9L16 16L4 9L16 2Z" stroke="currentColor" strokeWidth="1.5" fill="rgba(55,138,221,0.15)"/>
-    <path d="M16 16V30" stroke="currentColor" strokeWidth="1.5"/>
-    <path d="M16 16L28 9" stroke="currentColor" strokeWidth="1"/>
-  </svg>
+  <img
+    src="/images/LOGO.jpeg"
+    alt="Formará Logo"
+    style={{ width: '41px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
+  />
 );
 
 const ProductIcon = () => (
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 6L40 15V33L24 42L8 33V15L24 6Z" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" fill="none"/>
-    <path d="M24 6L40 15L24 24L8 15L24 6Z" stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="rgba(255,255,255,0.05)"/>
-    <path d="M24 24V42" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+    <path d="M24 6L40 15V33L24 42L8 33V15L24 6Z" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" fill="none" />
+    <path d="M24 6L40 15L24 24L8 15L24 6Z" stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="rgba(255,255,255,0.05)" />
+    <path d="M24 24V42" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+  </svg>
+);
+
+const StarIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
   </svg>
 );
 
@@ -74,7 +131,7 @@ function useScrollReveal() {
 /* ============================================================
    NAVBAR
    ============================================================ */
-function Navbar() {
+function Navbar({ onHome }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -85,20 +142,49 @@ function Navbar() {
   }, []);
 
   const links = [
-    { label: 'Catálogo', href: '#catalogo' },
-    { label: 'Materiais', href: '#materiais' },
-    { label: 'Como Funciona', href: '#como-funciona' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Sobre Nós', view: 'about' },
+    { label: 'Catálogo', href: '#catalogo', view: 'home' },
+    { label: 'Materiais', href: '#materiais', view: 'home' },
+    { label: 'Como Funciona', href: '#como-funciona', view: 'home' },
   ];
+
+  const handleLinkClick = (l) => {
+    setMenuOpen(false);
+    if (l.view === 'about') {
+      if (onHome) onHome('about');
+    } else {
+      if (onHome) onHome('home');
+      setTimeout(() => {
+        if (l.href) {
+          const el = document.querySelector(l.href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
 
   return (
     <>
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-        <a href="#" className="nav-logo"><CubeLogo /> PrintLab 3D</a>
+        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); if (onHome) onHome('home'); window.scrollTo(0, 0); }}>
+          <CubeLogo /> Studio 3D Formará
+        </a>
         <ul className="nav-links">
-          {links.map(l => <li key={l.href}><a href={l.href}>{l.label}</a></li>)}
+          {links.map(l => (
+            <li key={l.label}>
+              <a
+                href={l.href || '#'}
+                onClick={(e) => {
+                  if (!l.href) e.preventDefault();
+                  handleLinkClick(l);
+                }}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
-        <button className="nav-cta" onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}>
+        <button className="nav-cta" onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um orçamento.`, '_blank')}>
           Solicitar Orçamento
         </button>
         <button className={`hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -106,8 +192,8 @@ function Navbar() {
         </button>
       </nav>
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
-        {links.map(l => <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>)}
-        <button className="btn-primary" onClick={() => { setMenuOpen(false); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }); }}>
+        {links.map(l => <a key={l.label} href={l.href || '#'} onClick={(e) => { e.preventDefault(); handleLinkClick(l); }}>{l.label}</a>)}
+        <button className="btn-primary" onClick={() => { setMenuOpen(false); window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um orçamento.`, '_blank'); }}>
           Solicitar Orçamento
         </button>
       </div>
@@ -121,15 +207,12 @@ function Navbar() {
 function Hero() {
   return (
     <section className="hero" id="hero">
-      <div className="hero-grid" />
-      <div className="cube-container">
-        <div className="cube">
-          {[...Array(6)].map((_, i) => <div key={i} className="cube-face" />)}
-        </div>
-      </div>
       <div className="hero-content">
+        <div className="loader-wrapper">
+          <div className="custom-loader"></div>
+        </div>
         <h1>Transformamos <span>Ideias</span> em Objetos Reais</h1>
-        <p>Impressão 3D profissional com precisão micrométrica, velocidade de entrega e qualidade industrial. Do protótipo à produção em escala.</p>
+        <p>Impressão 3D profissional com precisão, velocidade de entrega e qualidade. Do protótipo à produção em escala.</p>
         <div className="hero-buttons">
           <button className="btn-primary" onClick={() => document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' })}>
             Ver Catálogo
@@ -139,6 +222,13 @@ function Hero() {
           </button>
         </div>
         <div className="hero-badge">✓ Entrega em até 5 dias úteis</div>
+        <div className="hero-social">
+          <a href="https://www.instagram.com/maker_formara?igsh=dnJlejQ3eXluMXdw" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -182,9 +272,9 @@ function Stats() {
   return (
     <section className="stats reveal" ref={ref}>
       <div className="stats-grid">
-        <div className="stat-item"><h3><AnimatedNumber target={500} suffix="+" /></h3><p>Modelos Disponíveis</p></div>
-        <div className="stat-item"><h3><AnimatedNumber target={10000} suffix="+" /></h3><p>Peças Entregues</p></div>
-        <div className="stat-item"><h3><AnimatedNumber target={15} suffix="+" /></h3><p>Materiais Disponíveis</p></div>
+        <div className="stat-item"><h3><AnimatedNumber target={15} suffix="+" /></h3><p>Modelos Disponíveis</p></div>
+        <div className="stat-item"><h3><AnimatedNumber target={80} suffix="+" /></h3><p>Peças Entregues</p></div>
+        <div className="stat-item"><h3><AnimatedNumber target={3} suffix="+" /></h3><p>Materiais Disponíveis</p></div>
         <div className="stat-item"><h3><AnimatedNumber target={98} suffix="%" /></h3><p>Satisfação dos Clientes</p></div>
       </div>
     </section>
@@ -194,14 +284,14 @@ function Stats() {
 /* ============================================================
    CATALOG
    ============================================================ */
-function Catalog() {
+function Catalog({ onSelectProduct }) {
   const [filter, setFilter] = useState('Todos');
   const ref = useScrollReveal();
 
   const filtered = filter === 'Todos' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
 
   return (
-    <section className="catalog reveal" id="catalogo" ref={ref}>
+    <section className="catalog reveal glass" id="catalogo" ref={ref}>
       <h2 className="section-title">Nosso Catálogo</h2>
       <p className="section-subtitle">Peças sob demanda com a mais alta qualidade de impressão 3D</p>
       <div className="catalog-filters">
@@ -213,9 +303,13 @@ function Catalog() {
       </div>
       <div className="catalog-grid">
         {filtered.map(p => (
-          <div className="product-card" key={p.id}>
+          <div className="product-card" key={p.id} onClick={() => onSelectProduct(p)}>
             <div className="product-image">
-              <ProductIcon />
+              {p.images && p.images[0] ? (
+                <img src={p.images[0]} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <ProductIcon />
+              )}
               {p.ribbon && <div className="product-ribbon">{p.ribbon}</div>}
             </div>
             <div className="product-body">
@@ -224,8 +318,30 @@ function Catalog() {
                 <span className="badge-material">{p.material}</span>
                 <span className="badge-category">{p.category}</span>
               </div>
-              <div className="product-price">R$ {p.price.toFixed(2).replace('.', ',')}</div>
-              <button className="btn-solicitar"><span>Solicitar</span></button>
+              <div className="product-price">
+                {p.priceMin != null
+                  ? `R$ ${p.priceMin} – R$ ${p.priceMax}`
+                  : `R$ ${p.price.toFixed(2).replace('.', ',')}`}
+              </div>
+              <button
+                className="btn-solicitar"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const priceLabel = p.priceMin != null
+                    ? `R$ ${p.priceMin} – R$ ${p.priceMax}`
+                    : `R$ ${p.price.toFixed(2).replace('.', ',')}`;
+                  const message = `🛠️ *Interesse em Produto - Studio 3D Formará*\n` +
+                    `--------------------------------------------\n` +
+                    `*Produto:* ${p.name}\n` +
+                    `*Material:* ${p.material}\n` +
+                    `*Valor:* ${priceLabel}\n\n` +
+                    `Olá! Tenho interesse neste item do catálogo e gostaria de mais detalhes sobre prazos e personalização.`;
+                  const msgEncoded = encodeURIComponent(message);
+                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
+                }}
+              >
+                <span>Solicitar</span>
+              </button>
             </div>
           </div>
         ))}
@@ -240,7 +356,7 @@ function Catalog() {
 function Materials() {
   const ref = useScrollReveal();
   return (
-    <section className="materials reveal" id="materiais" ref={ref}>
+    <section className="materials reveal glass" id="materiais" ref={ref}>
       <h2 className="section-title">Materiais Disponíveis</h2>
       <p className="section-subtitle">Cada projeto merece o material ideal</p>
       <div className="materials-grid">
@@ -277,8 +393,8 @@ function HowItWorks() {
   }, []);
 
   const steps = [
-    { icon: '📤', title: 'Envie o Arquivo', desc: 'Formato STL, OBJ ou STEP' },
-    { icon: '⚙️', title: 'Configuramos', desc: 'Escolha material, qualidade e quantidade' },
+    { icon: '📤', title: 'Envie o Arquivo', desc: 'Formato PNG, JPG, STL ou OBJ ' },
+    { icon: '⚙️', title: 'Configuramos', desc: 'Escolha material e quantidade' },
     { icon: '🖨️', title: 'Imprimimos', desc: 'Produção com equipamentos de alta precisão' },
     { icon: '📦', title: 'Entregamos', desc: 'Embalagem segura para todo o Brasil' },
   ];
@@ -300,6 +416,128 @@ function HowItWorks() {
         ))}
       </div>
     </section>
+  );
+}
+
+/* ============================================================
+   PRODUCT PAGE (Detail)
+   ============================================================ */
+function ProductPage({ product, onBack }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+  };
+
+  const priceLabel = product.priceMin != null
+    ? `R$ ${product.priceMin} – R$ ${product.priceMax}`
+    : `R$ ${product.price.toFixed(2).replace('.', ',')}`;
+
+  return (
+    <div className="product-detail-page">
+      <div className="container">
+        <button className="btn-back" onClick={onBack}>← Voltar para o Catálogo</button>
+        <div className="product-detail-container glass">
+          <div className="product-detail-left">
+            <div className="product-carousel">
+              {product.images && product.images.length > 1 && (
+                <>
+                  <button className="carousel-arrow prev" onClick={prevImage}>‹</button>
+                  <button className="carousel-arrow next" onClick={nextImage}>›</button>
+                </>
+              )}
+              <div className="carousel-image-container">
+                {product.images && product.images[currentImageIndex] ? (
+                  <img src={product.images[currentImageIndex]} alt={product.name} />
+                ) : (
+                  <div className="placeholder-image"><ProductIcon /></div>
+                )}
+              </div>
+              {product.images && product.images.length > 1 && (
+                <div className="carousel-dots">
+                  {product.images.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`dot ${i === currentImageIndex ? 'active' : ''}`}
+                      onClick={() => setCurrentImageIndex(i)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="product-detail-right">
+            <span className="detail-category">{product.category}</span>
+            <h1>{product.name}</h1>
+            <div className="detail-meta">
+              <span className="badge-material">{product.material}</span>
+            </div>
+            <p className="detail-description">{product.description}</p>
+            <div className="detail-price">{priceLabel}</div>
+            <button
+              className="btn-primary btn-solicitar-large"
+              onClick={() => {
+                const message = `🛠️ *Interesse em Produto - Studio 3D Formará*\n` +
+                  `--------------------------------------------\n` +
+                  `*Produto:* ${product.name}\n` +
+                  `*Material:* ${product.material}\n` +
+                  `*Valor:* ${priceLabel}\n\n` +
+                  `Olá! Tenho interesse neste item do catálogo e gostaria de mais detalhes sobre prazos e personalização.`;
+                const msgEncoded = encodeURIComponent(message);
+                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
+              }}
+            >
+              Solicitar Orçamento no WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+function AboutPage({ onBack }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="about-page">
+      <div className="container">
+        <button className="btn-back" onClick={() => onBack('home')}>← Voltar para o Início</button>
+
+        <article className="about-content glass animated">
+          <header className="about-header">
+            <span className="detail-category">Nossa Empresa</span>
+            <h1>Sobre Nós</h1>
+          </header>
+
+          <section className="about-section">
+            <h2>Nossa História</h2>
+            <p>Minha jornada no mundo da impressão 3D começou há cerca de dois anos. Durante esse período, adquiri conhecimento aprofundado em montagem e manutenção de equipamentos, trabalhando diretamente na área e compreendendo todos os detalhes técnicos necessários para o sucesso neste segmento.</p>
+            <p>Após essa minha experiência acumulada, decidi empreender por conta própria. Investi meus recursos em uma impressora 3D iniciante da marca Two Trees Bluer Plus, marcando o início oficial de nossa operação. Nessa etapa, contei com o apoio da minha noiva, e juntos começamos a estruturar nosso negócio.</p>
+            <p>Com o crescimento progressivo, reinvestimos nossos ganhos e realizamos uma atualização significativa de equipamento, adquirindo uma impressora Bambu Lab A1 com o módulo AMS. Esse investimento potencializou nossa capacidade produtiva e qualidade de trabalho.</p>
+          </section>
+
+          <section className="about-section">
+            <h2>Presente e Alcance</h2>
+            <p>Hoje, nossa empresa atua tanto no mercado nacional quanto internacional. Realizamos vendas para clientes em todo o Brasil, assim como para os Estados Unidos e Venezuela, consolidando nossa posição como fornecedora confiável de produtos impressos em 3D em diferentes regiões.</p>
+            <p>Continuamos comprometidos com a qualidade, inovação e excelência no atendimento, mantendo os valores que nos levaram a crescer desde o início: dedicação, conhecimento técnico e foco no cliente.</p>
+          </section>
+        </article>
+      </div>
+    </div>
   );
 }
 
@@ -355,11 +593,18 @@ function CTA() {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       setSubmitted(true);
+      const message = `🚀 *Novo Contato - Studio 3D Formará*\n` +
+        `--------------------------------------------\n` +
+        `👤 *Nome:* ${name}\n` +
+        `✉️ *E-mail:* ${email}\n\n` +
+        `Olá! Vi o site e gostaria de solicitar um orçamento personalizado para o meu projeto 3D.`;
+      const msgEncoded = encodeURIComponent(message);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msgEncoded}`, '_blank');
     }
   };
 
   return (
-    <section className="cta-section reveal" id="contato" ref={ref}>
+    <section className="cta-section reveal glass" id="contato" ref={ref}>
       <h2>Pronto para Dar Vida ao Seu Projeto?</h2>
       {submitted ? (
         <div className="form-success">🎉 Obrigado! Entraremos em contato em breve.</div>
@@ -388,40 +633,42 @@ function CTA() {
 /* ============================================================
    FOOTER
    ============================================================ */
-function Footer() {
+function Footer({ onHome }) {
   return (
-    <footer className="footer">
+    <footer className="footer glass">
       <div className="footer-grid">
         <div className="footer-brand">
-          <a href="#" className="nav-logo"><CubeLogo /> PrintLab 3D</a>
+          <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); if (onHome) onHome('home'); window.scrollTo(0, 0); }}>
+            <CubeLogo /> Studio 3D Formará
+          </a>
           <p>Transformando ideias em objetos reais com impressão 3D profissional de alta qualidade.</p>
           <div className="footer-social">
-            <a href="#" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="#" aria-label="YouTube">
-              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <a href="https://www.instagram.com/maker_formara?igsh=dnJlejQ3eXluMXdw" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
             </a>
           </div>
         </div>
         <div>
           <h5>Empresa</h5>
-          <ul><li><a href="#">Sobre Nós</a></li><li><a href="#">Blog</a></li><li><a href="#">Carreiras</a></li><li><a href="#">Parceiros</a></li></ul>
+          <ul>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); if (onHome) onHome('about'); }}>Sobre Nós</a></li>
+          </ul>
         </div>
         <div>
           <h5>Catálogo</h5>
-          <ul><li><a href="#">Peças Técnicas</a></li><li><a href="#">Decoração</a></li><li><a href="#">Protótipos</a></li><li><a href="#">Educacional</a></li></ul>
+          <ul>
+            <li><a href="#catalogo" onClick={(e) => { e.preventDefault(); if (onHome) onHome('home', 'catalogo'); }}>Todos</a></li>
+          </ul>
         </div>
         <div>
           <h5>Suporte</h5>
-          <ul><li><a href="#">Central de Ajuda</a></li><li><a href="#">Envio de Arquivos</a></li><li><a href="#">Guia de Materiais</a></li><li><a href="#">Contato</a></li></ul>
+          <ul>
+            <li><a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">Contato</a></li>
+          </ul>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2026 PrintLab 3D. Todos os direitos reservados.</p>
+        <p>© 2026 Studio 3D Formará. Todos os direitos reservados.</p>
       </div>
     </footer>
   );
@@ -431,17 +678,51 @@ function Footer() {
    APP
    ============================================================ */
 export default function App() {
+  const [view, setView] = useState('home');
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleSelectProduct = (product) => {
+    setSelectedProduct(product);
+    setView('product');
+  };
+
+  const handleNavigate = (newView, targetId = null) => {
+    setSelectedProduct(null);
+    setView(newView);
+    if (targetId) {
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Stats />
-      <Catalog />
-      <Materials />
-      <HowItWorks />
-      <Testimonials />
-      <CTA />
-      <Footer />
-    </>
+    <div className="app">
+      <div id="stars" />
+      <div id="stars2" />
+      <div id="stars3" />
+      <Navbar onHome={handleNavigate} />
+
+      {view === 'product' && selectedProduct ? (
+        <ProductPage product={selectedProduct} onBack={() => handleNavigate('home', 'catalogo')} />
+      ) : view === 'about' ? (
+        <AboutPage onBack={handleNavigate} />
+      ) : (
+        <>
+          <Hero />
+          <Stats />
+          <Catalog onSelectProduct={handleSelectProduct} />
+          <Materials />
+          <HowItWorks />
+          <Testimonials />
+          <CTA />
+        </>
+      )}
+
+      <Footer onHome={handleNavigate} />
+    </div>
   );
 }
