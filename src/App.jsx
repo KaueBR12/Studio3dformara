@@ -362,8 +362,10 @@ function Materials() {
       <div className="materials-grid">
         {MATERIALS.map(m => (
           <div className="material-card" key={m.name}>
-            <div className="material-icon">{m.icon}</div>
-            <h4>{m.name}</h4>
+            <div className="material-header">
+              <div className="material-icon">{m.icon}</div>
+              <h4>{m.name}</h4>
+            </div>
             <p>{m.desc}</p>
             <div className="progress-bar"><label>Resistência</label><div className="progress-track"><div className="progress-fill" style={{ width: m.res + '%' }} /></div></div>
             <div className="progress-bar"><label>Flexibilidade</label><div className="progress-track"><div className="progress-fill" style={{ width: m.flex + '%' }} /></div></div>
