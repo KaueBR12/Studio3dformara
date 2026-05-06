@@ -12,15 +12,15 @@ export const PRODUCTS = [
     images: ['/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
   },
   {
-    id: 2,
-    name: 'Chaveiros Personalizados',
-    priceMin: 8,
-    priceMax: 25,
-    material: 'PLA/PETG',
-    category: 'Decoração',
-    ribbon: 'Novo',
-    description: 'Chaveiros exclusivos criados sob medida. Personalize com nomes, logotipos ou designs únicos. Alta durabilidade e acabamento premium.',
-    images: ['/images/p2a.png', '/images/p2b.png']
+    id: 9,
+    name: 'Action Figures',
+    priceMin: 100,
+    priceMax: 500,
+    material: 'Resina/PLA',
+    category: 'Colecionáveis',
+    ribbon: 'Premium',
+    description: 'Action Figures com alto nível de detalhamento e acabamento impecável. Perfeito para colecionadores e entusiastas que buscam peças exclusivas de seus personagens favoritos.',
+    images: ['/images/1.png', '/images/3.png']
   },
   {
     id: 3,
@@ -81,9 +81,20 @@ export const PRODUCTS = [
     description: 'Um porta-retrato charmoso em formato de nuvem, perfeito para decorar quartos infantis ou trazer um toque lúdico ao ambiente.',
     images: ['/images/portretrato.png']
   },
+  {
+    id: 2,
+    name: 'Chaveiros Personalizados',
+    priceMin: 8,
+    priceMax: 25,
+    material: 'PLA/PETG',
+    category: 'Decoração',
+    ribbon: 'Novo',
+    description: 'Chaveiros exclusivos criados sob medida. Personalize com nomes, logotipos ou designs únicos. Alta durabilidade e acabamento premium.',
+    images: ['/images/p2a.png', '/images/p2b.png']
+  },
 ];
 
-export const CATEGORIES = ['Todos', 'Decoração'];
+export const CATEGORIES = ['Todos', 'Decoração', 'Colecionáveis'];
 
 export const MATERIALS = [
   { name: 'PLA', desc: 'Biodegradável e fácil de imprimir. Ideal para protótipos e modelos decorativos.', icon: '🌿', res: 60, flex: 30, temp: 40 },
