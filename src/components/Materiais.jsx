@@ -1,8 +1,9 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { MATERIALS } from '../data/constants';
+import { FilamentIcon, PrecisionIcon, DurabilityIcon } from './ui/Icones';
+import { MATERIALS } from '../data/constantes';
 
-export function Materials() {
+export function Materiais() {
   const ref = useScrollReveal();
   return (
     <section className="materials reveal glass" id="materiais" ref={ref}>

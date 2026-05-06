@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { WHATSAPP_NUMBER } from '../data/constants';
+import { WHATSAPP_NUMBER } from '../data/constantes';
 
-export function CTA() {
+export function Contato() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});

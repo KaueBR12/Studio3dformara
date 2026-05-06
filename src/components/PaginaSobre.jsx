@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-export function AboutPage({ onBack }) {
+export function PaginaSobre({ onBack }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

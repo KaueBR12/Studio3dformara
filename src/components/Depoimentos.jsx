@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { TESTIMONIALS } from '../data/constants';
+import { TESTIMONIALS } from '../data/constantes';
 
-export function Testimonials() {
+export function Depoimentos() {
   const [current, setCurrent] = useState(0);
   const ref = useScrollReveal();
 

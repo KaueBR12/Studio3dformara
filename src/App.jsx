@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import './index.css';
 
-// Components
-import { Navbar } from './components/Navbar';
+// Componentes
+import { Cabecalho } from './components/Cabecalho';
 import { Hero } from './components/Hero';
-import { Stats } from './components/Stats';
-import { Catalog } from './components/Catalog';
-import { Materials } from './components/Materials';
-import { HowItWorks } from './components/HowItWorks';
-import { Testimonials } from './components/Testimonials';
-import { CTA } from './components/CTA';
-import { Footer } from './components/Footer';
-import { ProductPage } from './components/ProductPage';
-import { AboutPage } from './components/AboutPage';
+import { Estatisticas } from './components/Estatisticas';
+import { Catalogo } from './components/Catalogo';
+import { Materiais } from './components/Materiais';
+import { ComoFunciona } from './components/ComoFunciona';
+import { Depoimentos } from './components/Depoimentos';
+import { Contato } from './components/Contato';
+import { Rodape } from './components/Rodape';
+import { PaginaProduto } from './components/PaginaProduto';
+import { PaginaSobre } from './components/PaginaSobre';
 
 export default function App() {
   const [view, setView] = useState('home');
@@ -47,31 +47,31 @@ export default function App() {
       <div id="stars" />
       <div id="stars2" />
       <div id="stars3" />
-      <Navbar onHome={handleNavigate} />
+      <Cabecalho onHome={handleNavigate} />
 
       {loading && <ProductLoader />}
 
       {view === 'product' && selectedProduct ? (
-        <ProductPage product={selectedProduct} onBack={() => handleNavigate('home', 'catalogo')} />
+        <PaginaProduto product={selectedProduct} onBack={() => handleNavigate('home', 'catalogo')} />
       ) : view === 'about' ? (
-        <AboutPage onBack={() => handleNavigate('home')} />
+        <PaginaSobre onBack={() => handleNavigate('home')} />
       ) : (
         <>
           <Hero onCatalogClick={() => handleNavigate('home', 'catalogo')} />
-          <Stats />
+          <Estatisticas />
           <div id="catalogo">
-            <Catalog onSelectProduct={handleSelectProduct} />
+            <Catalogo onSelectProduct={handleSelectProduct} />
           </div>
           <div id="materiais">
-            <Materials />
+            <Materiais />
           </div>
-          <HowItWorks />
-          <Testimonials />
-          <CTA />
+          <ComoFunciona />
+          <Depoimentos />
+          <Contato />
         </>
       )}
 
-      <Footer onNavigate={handleNavigate} />
+      <Rodape onHome={handleNavigate} />
     </div>
   );
 }

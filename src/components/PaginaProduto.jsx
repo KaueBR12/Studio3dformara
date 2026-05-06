@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ProductIcon } from './ui/Icons';
-import { WHATSAPP_NUMBER } from '../data/constants';
+import { ProductIcon } from './ui/Icones';
+import { WHATSAPP_NUMBER } from '../data/constantes';
 
-export function ProductPage({ product, onBack }) {
+export function PaginaProduto({ product, onBack }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export function ProductPage({ product, onBack }) {
               className="btn-primary btn-solicitar-large"
               onClick={() => {
                 const message = `*Solicitação de Orçamento - Studio 3D Formará*\n` +
-                  `--------------------------------------------\n` +
+                  `\n` +
                   `Olá! Gostaria de verificar a disponibilidade e condições para o seguinte item do catálogo:\n\n` +
                   `*Item:* ${product.name}\n` +
                   `*Material:* ${product.material}\n` +

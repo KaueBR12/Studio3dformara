@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export function HowItWorks() {
+export function ComoFunciona() {
   const ref = useScrollReveal();
   const lineRef = useRef(null);
 

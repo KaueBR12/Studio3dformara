@@ -1,8 +1,8 @@
 import React from 'react';
-import { CubeLogo } from './ui/Icons';
-import { WHATSAPP_NUMBER } from '../data/constants';
+import { CubeLogo } from './ui/Icones';
+import { WHATSAPP_NUMBER } from '../data/constantes';
 
-export function Footer({ onHome }) {
+export function Rodape({ onHome }) {
   return (
     <footer className="footer glass">
       <div className="footer-grid">

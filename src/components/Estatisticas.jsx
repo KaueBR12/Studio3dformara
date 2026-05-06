@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { StatsIcon } from './ui/Icones';
 
 function AnimatedNumber({ target, suffix = '' }) {
   const [count, setCount] = useState(0);
@@ -31,7 +32,7 @@ function AnimatedNumber({ target, suffix = '' }) {
   return <span ref={ref}>{count.toLocaleString('pt-BR')}{suffix}</span>;
 }
 
-export function Stats() {
+export function Estatisticas() {
   const ref = useScrollReveal();
   return (
     <section className="stats reveal" ref={ref}>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { CubeLogo } from './ui/Icons';
-import { WHATSAPP_NUMBER } from '../data/constants';
+import { CubeLogo } from './ui/Icones';
+import { WHATSAPP_NUMBER } from '../data/constantes';
 
-export function Navbar({ onHome }) {
+export function Cabecalho({ onHome }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,17 +21,8 @@ export function Navbar({ onHome }) {
 
   const handleLinkClick = (l) => {
     setMenuOpen(false);
-    if (l.view === 'about') {
-      if (onHome) onHome('about');
-    } else {
-      if (onHome) onHome('home');
-      setTimeout(() => {
-        if (l.href) {
-          const el = document.querySelector(l.href);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
+    const targetId = l.href ? l.href.replace('#', '') : null;
+    if (onHome) onHome(l.view, targetId);
   };
 
   return (

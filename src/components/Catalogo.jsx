@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { ProductIcon } from './ui/Icons';
-import { PRODUCTS, CATEGORIES, WHATSAPP_NUMBER } from '../data/constants';
+import { ProductIcon } from './ui/Icones';
+import { PRODUCTS, CATEGORIES, WHATSAPP_NUMBER } from '../data/constantes';
 
-export function Catalog({ onSelectProduct }) {
+export function Catalogo({ onSelectProduct }) {
   const [filter, setFilter] = useState('Todos');
   const ref = useScrollReveal();
 
