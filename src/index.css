@@ -120,7 +120,8 @@ button {
   right: 0;
   z-index: 1000;
   display: grid;
-  grid-template-columns: 1fr auto 1fr; /* 3 colunas: esquerda, centro (auto), direita */
+  grid-template-columns: 1fr auto 1fr;
+  /* 3 colunas: esquerda, centro (auto), direita */
   align-items: center;
   padding: 1.2rem 4rem;
   transition: all 0.3s ease;
@@ -143,6 +144,7 @@ button {
   font-size: 1.4rem;
   color: #fff;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-logo svg {
@@ -152,7 +154,8 @@ button {
 
 .nav-links {
   display: flex;
-  gap: 3.5rem; /* Aumentado de 2rem para 3.5rem para dar mais espaço */
+  gap: 3.5rem;
+  /* Aumentado de 2rem para 3.5rem para dar mais espaço */
   list-style: none;
   justify-content: center;
 }
@@ -170,7 +173,8 @@ button {
 }
 
 .nav-cta {
-  justify-self: end; /* Garante que o botão fique na ponta direita */
+  justify-self: end;
+  /* Garante que o botão fique na ponta direita */
   background: var(--accent-gradient);
   color: #fff;
   border: none;
@@ -252,6 +256,10 @@ button {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
+  }
+
+  .navbar.scrolled {
+    padding: 0.8rem 1.5rem; /* Reduz o padding lateral no mobile para o nome ter espaço */
   }
 
   .nav-links,
@@ -1595,7 +1603,7 @@ button {
 }
 
 .product-detail-container {
-  max-width: 1200px;
+  max-width: 1350px; /* Aumentado de 1200px para expandir mais para os lados */
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1709,7 +1717,7 @@ button {
   font-family: var(--font-mono);
   color: var(--accent-light);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
   opacity: 0.8;
@@ -1718,20 +1726,23 @@ button {
 .product-detail-right h1 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  /* Aumentado de 1rem */
   line-height: 1.1;
   color: #fff;
 }
 
 .detail-meta {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .detail-description {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.7);
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  /* Aumentado de 1.7 */
+  margin-bottom: 3rem;
+  /* Aumentado de 2.5rem */
 }
 
 .detail-price {
@@ -1753,17 +1764,20 @@ button {
 
 @media (max-width: 968px) {
   .product-detail-page {
-    padding: 7rem 1.5rem 4rem;
+    padding: 7rem 0.8rem 4rem; /* Reduzido o padding lateral de 1.5rem para o card ficar mais largo */
   }
 
   .product-detail-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 1.5rem;
+    gap: 4.5rem;
+    /* Aumentado de 3rem para dar mais respiro entre foto e texto */
+    padding: 1rem 1rem;
   }
 
   .product-carousel {
-    aspect-ratio: 1;
+    aspect-ratio: 4/5;
+    /* Mudado de 1 para 4/5 para a foto ficar maior e mais alta */
+    max-width: 100%;
   }
 
   .product-detail-right {
