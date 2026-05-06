@@ -1018,6 +1018,17 @@ button {
   .catalog-grid {
     grid-template-columns: 1fr;
   }
+
+  .product-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-meta {
+    justify-content: center;
+  }
 }
 
 /* ===== MATERIALS ===== */
@@ -1694,6 +1705,21 @@ button {
 
   .product-carousel {
     aspect-ratio: 1;
+  }
+
+  .product-detail-right {
+    text-align: center;
+    align-items: center;
+  }
+
+  .detail-meta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .detail-description {
+    text-align: center;
   }
 }
 /* ===== ABOUT PAGE ===== */
