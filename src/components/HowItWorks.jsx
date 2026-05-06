@@ -16,7 +16,7 @@ export function HowItWorks() {
   }, []);
 
   const steps = [
-    { icon: '📤', title: 'Envie o Arquivo', desc: 'Formato PNG, JPG, STL ou OBJ ' },
+    { icon: '📤', title: 'Recebemos o Arquivo', desc: 'Formato PNG, JPG, STL ou OBJ ' },
     { icon: '⚙️', title: 'Configuramos', desc: 'Escolha material e quantidade' },
     { icon: '🖨️', title: 'Imprimimos', desc: 'Produção com equipamentos de alta precisão' },
     { icon: '📦', title: 'Entregamos', desc: 'Embalagem segura para todo o Brasil' },
