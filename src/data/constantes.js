@@ -16,7 +16,7 @@ export const PRODUCTS = [
     name: 'Action Figures',
     priceMin: 100,
     priceMax: 500,
-    material: 'Resina/PLA',
+    material: 'PLA/PETG',
     category: 'Colecionáveis',
     ribbon: 'Premium',
     description: 'Action Figures com alto nível de detalhamento e acabamento impecável. Perfeito para colecionadores e entusiastas que buscam peças exclusivas de seus personagens favoritos.',

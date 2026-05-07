@@ -115,7 +115,7 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  animation: loaderFadeIn 0.3s ease;
+  animation: loaderFadeIn 0.2s ease;
 }
 
 @keyframes loaderFadeIn {
@@ -131,8 +131,8 @@ button {
 /* ===== REVEAL ANIMATION ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal.visible {
@@ -758,7 +758,7 @@ button {
   gap: 0.5rem;
   background: rgba(142, 68, 173, 0.15);
   border: 1px solid rgba(142, 68, 173, 0.3);
-  color: var(--accent-light);
+  color: var(--text-primary);
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-size: 0.9rem;
@@ -1289,6 +1289,27 @@ button {
   background: var(--bg-secondary);
 }
 
+.how-it-works .section-title,
+.how-it-works .section-subtitle {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.how-it-works.visible .section-title,
+.how-it-works.visible .section-subtitle {
+  animation: slideUpReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@supports (animation-timeline: view()) {
+
+  .how-it-works .section-title,
+  .how-it-works .section-subtitle {
+    animation: slideUpReveal both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 20%;
+  }
+}
+
 .steps-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -1304,6 +1325,65 @@ button {
   text-align: center;
   position: relative;
   z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Fallback for browsers without animation-timeline support */
+.how-it-works.visible .step {
+  animation: slideUpReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.how-it-works.visible .step:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.how-it-works.visible .step:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.how-it-works.visible .step:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.how-it-works.visible .step:nth-child(5) {
+  animation-delay: 0.7s;
+}
+
+/* Modern Scroll-Driven Animation (linked to scroll position) */
+@supports (animation-timeline: view()) {
+  .step {
+    animation: slideUpReveal both;
+    animation-timeline: view();
+  }
+
+  .step:nth-child(2) {
+    animation-range: entry 10% cover 30%;
+  }
+
+  .step:nth-child(3) {
+    animation-range: entry 25% cover 45%;
+  }
+
+  .step:nth-child(4) {
+    animation-range: entry 40% cover 60%;
+  }
+
+  .step:nth-child(5) {
+    animation-range: entry 55% cover 75%;
+  }
+}
+
+@keyframes slideUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .step-icon {
@@ -1373,12 +1453,54 @@ button {
     align-items: center;
     width: 100%;
     padding-left: 1rem;
-    /* Puxando para a esquerda (antes era 3rem) */
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  /* Animação para o Fallback no Mobile */
+  .how-it-works.visible .step {
+    animation: mobileSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  /* Animação Scroll-Driven no Mobile */
+  @supports (animation-timeline: view()) {
+    .step {
+      animation: mobileSlideIn both;
+      animation-timeline: view();
+    }
+
+    .step:nth-child(2) {
+      animation-range: entry 10% cover 30%;
+    }
+
+    .step:nth-child(3) {
+      animation-range: entry 25% cover 45%;
+    }
+
+    .step:nth-child(4) {
+      animation-range: entry 40% cover 60%;
+    }
+
+    .step:nth-child(5) {
+      animation-range: entry 55% cover 75%;
+    }
   }
 
   .step-icon {
     margin: 0;
     flex-shrink: 0;
+  }
+}
+
+@keyframes mobileSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
