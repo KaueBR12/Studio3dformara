@@ -65,7 +65,7 @@ export default function App() {
         <>
           <Hero onCatalogClick={() => handleNavigate('home', 'catalogo')} />
           <Estatisticas />
-          <div id="catalogo">
+          <div>
             <Catalogo onSelectProduct={handleSelectProduct} />
           </div>
           <div id="materiais">
