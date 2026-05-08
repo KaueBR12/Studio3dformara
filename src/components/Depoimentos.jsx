@@ -11,8 +11,8 @@ export function Depoimentos() {
 
   return (
     <section className="testimonials reveal" ref={ref}>
-      <h2 className="section-title">O Que Nossos Clientes Dizem</h2>
-      <p className="section-subtitle">Depoimentos reais de quem confia no nosso trabalho</p>
+      <h2 className="section-title">O que nossos clientes dizem</h2>
+      <p className="section-subtitle">Depoimentos reais de quem confia no nosso trabalho:</p>
       <div className="testimonials-wrapper">
         <div className="testimonials-track" style={{ transform: `translateX(-${current * 100}%)` }}>
           {TESTIMONIALS.map((t, i) => (
