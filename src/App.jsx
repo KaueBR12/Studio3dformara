@@ -47,6 +47,12 @@ export default function App() {
       <div id="stars" />
       <div id="stars2" />
       <div id="stars3" />
+      
+      {/* Premium Background Atmosphere */}
+      <div className="bg-glow bg-glow-1"></div>
+      <div className="bg-glow bg-glow-2"></div>
+      <div className="bg-glow bg-glow-3"></div>
+      
       <Cabecalho onHome={handleNavigate} />
 
       {loading && <ProductLoader />}
@@ -80,12 +86,13 @@ function ProductLoader() {
   return (
     <div className="product-loader-overlay">
       <div className="product-loader-content">
-        <div className="concentric-loader">
-          <div className="outer-ring">
-            <div className="inner-ring" />
-          </div>
+        <div className="premium-loader">
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-core"></div>
         </div>
-        <p>Carregando Detalhes...</p>
+        <p className="loader-text">Processando sua <span>Ideia</span>...</p>
       </div>
     </div>
   );
