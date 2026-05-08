@@ -1048,7 +1048,7 @@ button {
   margin: auto;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start; /* Alinha os números pelo topo */
   gap: 1rem;
   text-align: center;
 }
@@ -1056,16 +1056,19 @@ button {
 .stat-item {
   flex: 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .stat-item:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: -0.5rem;
-  top: 20%;
-  height: 60%;
+  right: 0;
+  top: 15%;
+  height: 70%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .stat-item h3 {
@@ -1086,8 +1089,17 @@ button {
 
 @media (max-width: 768px) {
   .stats-grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 2rem 1rem;
+  }
+  
+  .stat-item:nth-child(2)::after {
+    display: none;
+  }
+  
+  .stat-item h3 {
+    font-size: 1.8rem;
   }
 }
 
