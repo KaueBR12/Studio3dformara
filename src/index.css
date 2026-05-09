@@ -1389,7 +1389,7 @@ button {
 }
 
 .product-image {
-  height: 180px;
+  height: 230px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%);
   display: flex;
   align-items: center;
@@ -1405,7 +1405,7 @@ button {
 
 .product-ribbon {
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: -28px;
   background: var(--accent);
   color: #fff;
@@ -1515,6 +1515,89 @@ button {
 
   .product-meta {
     justify-content: center;
+  }
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding: 1rem;
+}
+
+.pagination-btn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(8px);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.page-number {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-spring);
+}
+
+.page-number:hover {
+  background: var(--bg-glass-hover);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.page-number.active {
+  background: var(--accent-gradient);
+  color: #fff;
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .pagination {
+    gap: 0.8rem;
+    flex-direction: column;
+  }
+
+  .pagination-pages {
+    order: -1;
+    margin-bottom: 0.5rem;
   }
 }
 

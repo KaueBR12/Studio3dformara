@@ -9,7 +9,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: 'Popular',
     description: 'A Litofania é uma peça de arte tridimensional que revela uma imagem detalhada quando iluminada por trás. Perfeita para presentes personalizados e decoração memorável.',
-    images: ['/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
+    images: ['/images/11.webp', '/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
   },
   {
     id: 9,
@@ -20,7 +20,38 @@ export const PRODUCTS = [
     category: 'Colecionáveis',
     ribbon: 'Premium',
     description: 'Action Figures com alto nível de detalhamento e acabamento impecável. Perfeito para colecionadores e entusiastas que buscam peças exclusivas de seus personagens favoritos.',
-    images: ['/images/1.png', '/images/3.png']
+    images: ['/images/1.png', '/images/2.png', '/images/3.png']
+  },
+  {
+    id: 2,
+    name: 'Chaveiros Personalizados',
+    priceMin: 8,
+    priceMax: 25,
+    material: 'PLA/PETG',
+    category: 'Decoração',
+    ribbon: 'Premium',
+    description: 'Chaveiros exclusivos criados sob medida. Personalize com nomes, logotipos ou designs únicos. Alta durabilidade e acabamento premium.',
+    images: ['/images/chaveiropersonalizado.mp4', '/images/p1b.png']
+  },
+  {
+    id: 6,
+    name: 'Miniatura Decorativa do seu Pet',
+    price: 180,
+    material: 'PLA',
+    category: 'Decoração',
+    ribbon: 'Popular',
+    description: 'Transforme a foto do seu melhor amigo em uma miniatura 3D eterna. Capturamos os detalhes únicos que tornam seu pet especial.',
+    images: ['/images/DOG.jpeg', '/images/p6a.png']
+  },
+  {
+    id: 10,
+    name: 'Nezuko de Crochê',
+    price: 150,
+    material: 'PLA',
+    category: 'Colecionáveis',
+    ribbon: 'Novo',
+    description: 'A adorável Nezuko Kamado 3D em PLA. Feita com PLA de alta qualidade, capturando cada detalhe icônico da personagem.',
+    images: ['/images/NEZUKO.jpeg']
   },
   {
     id: 3,
@@ -31,7 +62,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: null,
     description: 'Chaveiros em resina com detalhes ultra-precisos e acabamento translúcido. Ideais para colecionáveis e brindes sofisticados.',
-    images: ['/images/cheaveirocefe.png', '/images/chaveirotanjr.png', '/images/chaveirocoracao.png']
+    images: ['/images/CHAVEIROCAFE.jpeg', '/images/chaveirotanjr.png']
   },
   {
     id: 4,
@@ -41,7 +72,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: null,
     description: 'Uma caixa organizadora elegante disfarçada de livro. Combina funcionalidade com um toque clássico para qualquer ambiente.',
-    images: ['/images/livrocaixa.png']
+    images: ['/images/caixa livro.mp4', '/images/livrocaixa.png']
   },
   {
     id: 5,
@@ -51,17 +82,7 @@ export const PRODUCTS = [
     material: 'PLA',
     category: 'Decoração',
     description: 'Marca-páginas com designs geométricos e artísticos. Leves, resistentes e perfeitos para os amantes da leitura.',
-    images: ['/images/marcapg1.png', '/images/marcapg2.png', '/images/marcapg3.png']
-  },
-  {
-    id: 6,
-    name: 'Miniatura Decorativa do seu Pet',
-    price: 180,
-    material: 'PLA',
-    category: 'Decoração',
-    ribbon: 'Popular',
-    description: 'Transforme a foto do seu melhor amigo em uma miniatura 3D eterna. Capturamos os detalhes únicos que tornam seu pet especial.',
-    images: ['/images/pet.png', '/images/pet2.png']
+    images: ['/images/MARCAPAG.jpeg', '/images/MARC.jpeg', '/images/marcapg2.png', '/images/marcapg3.png']
   },
   {
     id: 7,
@@ -80,17 +101,6 @@ export const PRODUCTS = [
     category: 'Decoração',
     description: 'Um porta-retrato charmoso em formato de nuvem, perfeito para decorar quartos infantis ou trazer um toque lúdico ao ambiente.',
     images: ['/images/portretrato.png']
-  },
-  {
-    id: 2,
-    name: 'Chaveiros Personalizados',
-    priceMin: 8,
-    priceMax: 25,
-    material: 'PLA/PETG',
-    category: 'Decoração',
-    ribbon: 'Novo',
-    description: 'Chaveiros exclusivos criados sob medida. Personalize com nomes, logotipos ou designs únicos. Alta durabilidade e acabamento premium.',
-    images: ['/images/p2a.png', '/images/p2b.png']
   },
 ];
 

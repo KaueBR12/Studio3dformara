@@ -36,7 +36,26 @@ export function PaginaProduto({ product, onBack }) {
               )}
               <div className="carousel-image-container">
                 {product.images && product.images[currentImageIndex] ? (
-                  <img src={product.images[currentImageIndex]} alt={product.name} />
+                  (() => {
+                    const currentAsset = product.images[currentImageIndex];
+                    const isVideo = currentAsset?.toLowerCase().endsWith('.mp4') ||
+                      currentAsset?.toLowerCase().endsWith('.webm') ||
+                      currentAsset?.toLowerCase().endsWith('.mov');
+
+                    return isVideo ? (
+                      <video
+                        src={currentAsset}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        controls
+                        style={{ width: '100%', height: '100%', borderRadius: 'var(--radius-md)' }}
+                      />
+                    ) : (
+                      <img src={currentAsset} alt={product.name} />
+                    );
+                  })()
                 ) : (
                   <div className="placeholder-image"><ProductIcon /></div>
                 )}
