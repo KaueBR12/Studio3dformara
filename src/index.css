@@ -25,13 +25,13 @@
   --accent-primary: #8e44ad;
   --accent-secondary: #6c5ce7;
   --accent-glow: rgba(142, 68, 173, 0.4);
-  --accent-gradient: linear-gradient(135deg, #8e44ad, #6c5ce7);
+  --accent-gradient: linear-gradient(135deg, #15224e, #6c5ce7);
   --accent-gradient-text: linear-gradient(135deg, #a855f7, #818cf8);
 
   /* Neons & Glows */
   --neon-purple: #a855f7;
   --neon-blue: #3b82f6;
-  --neon-pink: #ec4899;
+  --neon-pink: #15224e;
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-glass: rgba(255, 255, 255, 0.12);
@@ -825,6 +825,140 @@ button {
   }
 }
 
+/* ===== MIDNIGHT SKY & METEORS ===== */
+.sky-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sky-canvas .stars {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.sky-canvas .stars-1 {
+  background-image: radial-gradient(1px 1px at 10% 10%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 10%, #fff, transparent);
+  background-size: 200px 200px;
+  animation: twinkle 3s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.sky-canvas .stars-2 {
+  background-image: radial-gradient(1.5px 1.5px at 20% 40%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 60% 85%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 85% 65%, #fff, transparent);
+  background-size: 300px 300px;
+  animation: twinkle 5s ease-in-out infinite 1s;
+  opacity: 0.4;
+}
+
+.sky-canvas .stars-3 {
+  background-image: radial-gradient(2px 2px at 40% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 10% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 80% 40%, #fff, transparent);
+  background-size: 400px 400px;
+  animation: twinkle 7s ease-in-out infinite 2s;
+  opacity: 0.3;
+}
+
+.sky-canvas .meteor {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sky-canvas .meteor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff, transparent);
+}
+
+.sky-canvas .m1 {
+  top: 10%;
+  left: 110%;
+  animation: shoot 8s linear infinite;
+}
+
+.sky-canvas .m2 {
+  top: 35%;
+  left: 110%;
+  animation: shoot 12s linear infinite 4s;
+}
+
+.sky-canvas .m3 {
+  top: 60%;
+  left: 110%;
+  animation: shoot 10s linear infinite 2s;
+}
+
+.sky-canvas .moon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 18px 18px 0 0 #fdfbd3;
+  filter: drop-shadow(0 0 25px rgba(253, 251, 211, 0.3));
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-35deg);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  15% {
+    transform: translateX(-1800px) translateY(1200px) rotate(-35deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-1800px) translateY(1200px) rotate(-35deg);
+    opacity: 0;
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -1055,7 +1189,8 @@ button {
   margin: auto;
   display: flex;
   justify-content: space-around;
-  align-items: flex-start; /* Alinha os números pelo topo */
+  align-items: flex-start;
+  /* Alinha os números pelo topo */
   gap: 1rem;
   text-align: center;
 }
@@ -1100,11 +1235,11 @@ button {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
   }
-  
+
   .stat-item:nth-child(2)::after {
     display: none;
   }
-  
+
   .stat-item h3 {
     font-size: 1.8rem;
   }

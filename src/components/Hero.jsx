@@ -3,6 +3,15 @@ import React from 'react';
 export function Hero() {
   return (
     <section className="hero" id="hero">
+      <div className="sky-canvas">
+        <div className="stars stars-1" />
+        <div className="stars stars-2" />
+        <div className="stars stars-3" />
+        <div className="meteor m1" />
+        <div className="meteor m2" />
+        <div className="meteor m3" />
+
+      </div>
       <div className="hero-content">
         <div className="loader-wrapper">
           <div className="custom-loader"></div>
