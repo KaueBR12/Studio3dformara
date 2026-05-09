@@ -9,7 +9,7 @@ export const PRODUCTS = [
     category: 'Decoração',
     ribbon: 'Popular',
     description: 'A Litofania é uma peça de arte tridimensional que revela uma imagem detalhada quando iluminada por trás. Perfeita para presentes personalizados e decoração memorável.',
-    images: ['/images/11.webp', '/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
+    images: ['/images/11.jpg', '/images/lito1.jpeg', '/images/lito2.jpeg', '/images/p1b.png']
   },
   {
     id: 9,
@@ -20,7 +20,7 @@ export const PRODUCTS = [
     category: 'Colecionáveis',
     ribbon: 'Premium',
     description: 'Action Figures com alto nível de detalhamento e acabamento impecável. Perfeito para colecionadores e entusiastas que buscam peças exclusivas de seus personagens favoritos.',
-    images: ['/images/1.png', '/images/2.png', '/images/3.png']
+    images: ['/images/minikn.jpg', '/images/1.png', '/images/2.png', '/images/3.png']
   },
   {
     id: 2,
@@ -82,7 +82,7 @@ export const PRODUCTS = [
     material: 'PLA',
     category: 'Decoração',
     description: 'Marca-páginas com designs geométricos e artísticos. Leves, resistentes e perfeitos para os amantes da leitura.',
-    images: ['/images/MARCAPAG.jpeg', '/images/MARC.jpeg', '/images/marcapg2.png', '/images/marcapg3.png']
+    images: ['/images/MARCAPAG.jpeg', '/images/MARC.jpeg', '/images/marcapg2.png']
   },
   {
     id: 7,
@@ -91,7 +91,7 @@ export const PRODUCTS = [
     material: 'PLA',
     category: 'Decoração',
     description: 'Um envelope decorativo elegante e personalizado, ideal para presentear ou organizar pequenos cartões com um toque artesanal 3D.',
-    images: ['/images/cartaenv.png']
+    images: ['/images/cartaenv.jpg']
   },
   {
     id: 8,
@@ -101,6 +101,16 @@ export const PRODUCTS = [
     category: 'Decoração',
     description: 'Um porta-retrato charmoso em formato de nuvem, perfeito para decorar quartos infantis ou trazer um toque lúdico ao ambiente.',
     images: ['/images/portretrato.png']
+  },
+  {
+    id: 11,
+    name: 'Suporte de Celular',
+    price: 25,
+    material: 'PLA/PETG',
+    category: 'Decoração',
+    ribbon: 'Novo',
+    description: 'Suporte versátil e resistente para smartphone, ideal para chamadas de vídeo, assistir vídeos ou manter seu aparelho organizado na mesa.',
+    images: ['/images/cel1.jpg', '/images/cel2.jpg', '/images/cel3.jpg']
   },
 ];
 
